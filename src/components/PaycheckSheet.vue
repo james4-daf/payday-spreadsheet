@@ -4,12 +4,12 @@
     <h2 class="text-2xl font-bold mb-4">{{ headerTitle }}</h2>
 
     <!-- Income -->
-    <div class="mb-6 flex items-center gap-12 justify-between" v-if="sheetId">
-      <label class="block font-medium mb-1">Total Income</label>
+    <div class="mb-6 flex items-center gap-12 justify-end" v-if="sheetId">
+      <label class="font-medium">Total Income</label>
       <input
         v-model.number="income"
         type="number"
-        class="w-full p-2 border rounded text-right align-right"
+        class="p-2 border rounded text-right"
         placeholder="e.g. 1875"
       />
     </div>
@@ -112,7 +112,11 @@
     </div>
 
     <!-- Summary -->
-    <div class="mt-6" v-if="sheetId">
+
+    <div class="mt-6 flex justify-end gap-4" v-if="sheetId">
+      <p class="text-lg mr-auto">
+        Income: <strong>${{ income }}</strong>
+      </p>
       <p class="text-lg">
         Savings: <strong>${{ savingsTotal }}</strong>
       </p>
@@ -127,14 +131,6 @@
       </p>
     </div>
 
-    <!-- Save Button -->
-    <button
-      v-if="sheetId"
-      class="mt-4 bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700"
-      @click="saveSheet"
-    >
-      Save Sheet
-    </button>
     <div v-else class="text-gray-500">
       No sheet selected. Use the tabs below to add or select a sheet.
     </div>

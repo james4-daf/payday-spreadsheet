@@ -2,7 +2,7 @@
 <template>
   <div class="fixed bottom-0 left-0 right-0 bg-white border-t">
     <div
-      class="max-w-5xl mx-auto px-2 py-2 flex items-center gap-2 overflow-x-auto"
+      class="max-w-5xl mx-auto px-2 py-2 flex items-center justify-center gap-2 overflow-x-auto"
     >
       <button
         v-for="t in tabs"

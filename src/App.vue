@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { inject } from '@vercel/analytics';
 import { onMounted, ref } from 'vue';
 import PaycheckSheet from './components/PaycheckSheet.vue';
 import SheetTabs from './components/SheetTabs.vue';
@@ -17,7 +18,8 @@ async function ensureInitialSheet() {
       name: 'Sheet 1',
       date,
       income: 0,
-      allocations: [],
+      savings: [],
+      expenses: [],
       leftover: 0,
     };
     await sheetStore.put(doc);
@@ -28,6 +30,7 @@ async function ensureInitialSheet() {
 }
 
 onMounted(() => {
+  inject();
   void ensureInitialSheet();
   // Request persistent storage to reduce eviction under storage pressure
   if (navigator.storage && navigator.storage.persist) {
